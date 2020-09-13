@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ProductosDeMiPueblo</string>
+    <string name="texto_inicio">Esta aplicación es para el parcial de dispositivos moviles e intenta que el comercio de un municipio se
+    beneficie de la tecnologia</string>
+    <string name="nombre_del_negocio">Inserte Nombre del negocio</string>
+    <string name="direccion_del_negocio">Inserte la direccion del negocio</string>
+    <string name="descripcion_negocio">Tipo de negocio, o una breve descripción, como quiera el usuario</string>
 </resources>
