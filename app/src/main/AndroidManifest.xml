@@ -15,6 +15,9 @@
         <activity
             android:name=".DetalleProducto"
             android:parentActivityName=".MainActivity" />
+
+        <activity android:name=".Productos"  android:parentActivityName=".MainActivity"></activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
