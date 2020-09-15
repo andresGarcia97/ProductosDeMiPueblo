@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void lanzarActivityPrueba(View view) {
-        Intent intet = new Intent(this, DetalleProducto.class);
-        startActivity(intet);
+        //Intent intent = new Intent(this, DetalleProducto.class);
+        Intent intent = new Intent(this, DatosCliente.class);
+        startActivity(intent);
     }
 }

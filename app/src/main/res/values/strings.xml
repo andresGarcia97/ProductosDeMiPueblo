@@ -11,4 +11,12 @@
     <string name="agregar">Añadir</string>
     <string name="simboloMas">+</string>
     <string name="simboloMenos">-</string>
+    <string name="nombreCliente">Nombre</string>
+    <string name="apellidoCliente">Apellidos</string>
+    <string name="cedulaCliente">CC ó TI</string>
+    <string name="DireccionCliente">Dirección</string>
+    <string name="telefonoCliente">Telefono</string>
+    <string name="button_enviar_datos_personales">Enviar</string>
+    <string name="campoRequerido">Requerido</string>
+    <string name="datosValidos">Datos Enviados</string>
 </resources>
