@@ -2,7 +2,9 @@ package com.co.movil.productosdemipueblo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.co.movil.productosdemipueblo.adapters.NegocioAdapter;
@@ -31,5 +33,10 @@ public class MainActivity extends AppCompatActivity {
         negocios.add(new Negocio(R.drawable.lastofus,"EL Tercer negocio","Un mundo post apocaliptico","supervivencia"));
         adaptadorNegocio = new NegocioAdapter(getApplicationContext(),negocios);
         listViewNegocios.setAdapter(adaptadorNegocio);
+    }
+
+    public void lanzarActivityPrueba(View view) {
+        Intent intet = new Intent(this, DetalleProducto.class);
+        startActivity(intet);
     }
 }

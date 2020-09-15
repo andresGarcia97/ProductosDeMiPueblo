@@ -5,4 +5,10 @@
     <string name="nombre_del_negocio">Inserte Nombre del negocio</string>
     <string name="direccion_del_negocio">Inserte la direccion del negocio</string>
     <string name="descripcion_negocio">Tipo de negocio, o una breve descripción, como quiera el usuario</string>
+    <string name="descripcion_producto">inserte aqui la descripcion del producto como marca, peso y cosas asi</string>
+    <string name="precio_producto">inserte el precio del producto aqui</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="agregar">Añadir</string>
+    <string name="simboloMas">+</string>
+    <string name="simboloMenos">-</string>
 </resources>
