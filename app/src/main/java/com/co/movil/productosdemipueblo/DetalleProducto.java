@@ -1,10 +1,13 @@
 package com.co.movil.productosdemipueblo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.co.movil.productosdemipueblo.clases.Producto;
 
 public class DetalleProducto extends AppCompatActivity {
 
@@ -29,5 +32,10 @@ public class DetalleProducto extends AppCompatActivity {
         cantidadProducto++;
         String cantidad = String.valueOf(cantidadProducto);
         editTextCantidadProducto.setText(cantidad);
+    }
+
+    public void lanzarActivityProductos(View view) {
+        Intent intent = new Intent(this, Productos.class);
+        startActivity(intent);
     }
 }
