@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#F77F00</color>
+    <color name="colorPrimaryDark">#05A8AA</color>
+    <color name="colorAccent">#b8d5b8</color>
+    //https://coolors.co/05a8aa-b8d5b8-f77f00
 </resources>

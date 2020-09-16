@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProductosDeMiPueblo</string>
+    <string name="app_name">Productos de Mi Pueblo</string>
     <string name="texto_inicio">Esta aplicación es para el parcial de dispositivos moviles e intenta que el comercio de un municipio se
     beneficie de la tecnologia</string>
     <string name="nombre_del_negocio">Inserte Nombre del negocio</string>
@@ -19,4 +19,10 @@
     <string name="button_enviar_datos_personales">Enviar</string>
     <string name="campoRequerido">Requerido</string>
     <string name="datosValidos">Datos Enviados</string>
+    <string name="nombreProducto">Inserte aqui el nombre del producto</string>
+    <string name="quitaProducto">X</string>
+    <string name="precioProducto">Inserte aqui el precio del producto</string>
+    <string name="cantidadProductos">Inserte aqui cantidad de productos</string>
+    <string name="totalSolicitud">Total</string>
+    <string name="enviarSolicitud">Solicitar</string>
 </resources>
