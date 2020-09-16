@@ -27,5 +27,6 @@
     <string name="enviarSolicitud">Solicitar</string>
     <string name="producto">Producto</string>
     <string name="cotizarProductos">Cotizar</string>
->>>>>>> 556041ef200699e8833f84ae460a8d245fe92207
+    <string name="cotizar">Cotizar</string>
+    >>>>>>> 556041ef200699e8833f84ae460a8d245fe92207
 </resources>

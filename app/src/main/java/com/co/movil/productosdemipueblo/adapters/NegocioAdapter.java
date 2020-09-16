@@ -67,7 +67,7 @@ public class NegocioAdapter extends BaseAdapter {
             super();
             imagen = view.findViewById(R.id.imagen);
             nombre = view.findViewById(R.id.nombre);
-            direccion = view.findViewById(R.id.direccion);
+            direccion = view.findViewById(R.id.producto);
             descripcion = view.findViewById(R.id.descripcion);
         }
     }
