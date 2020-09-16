@@ -8,7 +8,7 @@
 
     <ListView
         android:id="@+id/ListViewSolicitudProductos"
-        android:layout_width="403dp"
+        android:layout_width="match_parent"
         android:layout_height="538dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"

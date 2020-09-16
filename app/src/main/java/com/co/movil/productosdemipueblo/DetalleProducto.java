@@ -7,8 +7,6 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.co.movil.productosdemipueblo.clases.Producto;
-
 public class DetalleProducto extends AppCompatActivity {
 
     private EditText editTextCantidadProducto;

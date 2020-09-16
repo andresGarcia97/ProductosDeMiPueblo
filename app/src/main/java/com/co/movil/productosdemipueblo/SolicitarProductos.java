@@ -1,14 +1,12 @@
 package com.co.movil.productosdemipueblo;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.co.movil.productosdemipueblo.adapters.SolicitudProductoAdapter;
 import com.co.movil.productosdemipueblo.clases.Producto;
