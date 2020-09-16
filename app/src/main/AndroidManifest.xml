@@ -12,13 +12,11 @@
 
         <activity
             android:name=".SolicitarProductos"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".Productos"></activity>
         <activity
             android:name=".DatosCliente"
             android:parentActivityName=".SolicitarProductos" />
-        <activity
-            android:name=".DetalleProducto"
-            android:parentActivityName=".Productos" />
+        <activity android:name=".DetalleProducto" />
         <activity
             android:name=".Productos"
             android:parentActivityName=".MainActivity"></activity>
