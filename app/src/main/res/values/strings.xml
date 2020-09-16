@@ -25,4 +25,5 @@
     <string name="cantidadProductos">Inserte aqui cantidad de productos</string>
     <string name="totalSolicitud">Total</string>
     <string name="enviarSolicitud">Solicitar</string>
+    <string name="producto">Producto</string>
 </resources>
