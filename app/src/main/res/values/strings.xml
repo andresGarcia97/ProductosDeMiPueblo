@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">Productos de Mi Pueblo</string>
-    <string name="texto_inicio">Esta aplicación es para el parcial de la Materia de Dispositivos Moviles e intenta que el comercio de un municipio se
-    beneficie de la tecnologia, al acercar los productos y sus habitantes comprando y vendiendo de una manera más rapida y sin desplazamientos</string>
+    <string name="texto_inicio">Negocios</string>
     <string name="nombre_del_negocio">Inserte Nombre del negocio</string>
-    <string name="direccion_del_negocio">Inserte la direccion del negocio</string>
-    <string name="descripcion_negocio">Tipo de negocio, o una breve descripción, como quiera el usuario</string>
+    <string name="direccion_del_negocio">Inserte la direccion</string>
+    <string name="descripcion_negocio">Tipo de negocio, o una breve descripcióno</string>
     <string name="descripcion_producto">inserte aqui la descripcion del producto como marca, peso y cosas asi</string>
     <string name="precio_producto">inserte el precio del producto aqui</string>
     <string name="cancelar">Cancelar</string>

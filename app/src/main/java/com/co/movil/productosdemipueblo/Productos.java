@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,14 +19,25 @@ public class Productos extends AppCompatActivity {
 
     public ListView listViewProductos;
     private ProductoAdapter productoAdapter;
+    private TextView nombreNegocioProductos;
+    private String nombreN = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productos);
+        guardarNombre();
         listViewProductos = findViewById(R.id.listViewProductos);
         crearListaProductos();
         selectedProductoItem();
+    }
+
+    private void guardarNombre() {
+        nombreNegocioProductos = findViewById(R.id.nombreNegocioProductos);
+        nombreN = getIntent().getStringExtra("nombreN");
+        if (nombreN != null && !nombreN.isEmpty()) {
+            nombreNegocioProductos.setText(nombreN);
+        }
     }
 
     public void lanzarActivitySolicitarProductos(View view) {

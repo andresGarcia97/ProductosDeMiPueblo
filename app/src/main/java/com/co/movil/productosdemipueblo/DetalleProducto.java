@@ -7,6 +7,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.logging.Logger;
+
 public class DetalleProducto extends AppCompatActivity {
 
     private EditText editTextCantidadProducto;
@@ -21,15 +23,26 @@ public class DetalleProducto extends AppCompatActivity {
     }
 
     public void restarUno(View view) {
-        int cambio = (cantidadProducto == 0) ? 0 : (cantidadProducto--);
-        String cantidad = String.valueOf(cambio);
-        editTextCantidadProducto.setText(cantidad);
+        cambiarCantidad(false);
     }
 
     public void agregarUno(View view) {
-        cantidadProducto++;
-        String cantidad = String.valueOf(cantidadProducto);
-        editTextCantidadProducto.setText(cantidad);
+        cambiarCantidad(true);
+    }
+
+    public void cambiarCantidad(boolean sumaOresta) {
+        String cantidadString = editTextCantidadProducto.getText().toString();
+        if (("".equals(cantidadString))) {
+            cantidadProducto = 0;
+        } else {
+            cantidadProducto = Integer.parseInt(cantidadString);
+            if (sumaOresta && cantidadProducto >= 0) {
+                cantidadProducto++;
+            } else if (!sumaOresta && cantidadProducto > 0) {
+                cantidadProducto--;
+            }
+        }
+        editTextCantidadProducto.setText(String.valueOf(cantidadProducto));
     }
 
     public void lanzarActivityProductos(View view) {

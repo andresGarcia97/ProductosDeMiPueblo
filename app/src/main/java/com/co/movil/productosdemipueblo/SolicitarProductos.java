@@ -45,7 +45,7 @@ public class SolicitarProductos extends AppCompatActivity {
         for(Producto producto: productos) {
             total = total + producto.getCantidad()*producto.getPrecio();
         }
-        textViewTotal.setText("Total: "+String.valueOf(total));
+        textViewTotal.setText("Total: "+ total);
     }
 
     public void lanzarActivityDatosCliente(View view) {

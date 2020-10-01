@@ -66,7 +66,7 @@ public class NegocioAdapter extends BaseAdapter {
         public ViewHolder(View view) {
             super();
             imagen = view.findViewById(R.id.imagen);
-            nombre = view.findViewById(R.id.nombre);
+            nombre = view.findViewById(R.id.nombreNegocioProductos);
             direccion = view.findViewById(R.id.producto);
             descripcion = view.findViewById(R.id.descripcion);
         }
