@@ -16,7 +16,7 @@
     <string name="DireccionCliente">Dirección</string>
     <string name="telefonoCliente">Telefono</string>
     <string name="button_enviar_datos_personales">Enviar</string>
-    <string name="campoRequerido">Requerido</string>
+    <string name="campoRequerido">Se Necesita </string>
     <string name="datosValidos">Datos Enviados</string>
     <string name="nombreProducto">Inserte aqui el nombre del producto</string>
     <string name="quitaProducto">X</string>
@@ -27,5 +27,10 @@
     <string name="producto">Producto</string>
     <string name="cotizarProductos">Cotizar</string>
     <string name="cotizar">Cotizar</string>
+    <string name="infoPersonal">Datos Personales</string>
+    <string name="detalleProducto">Detalles del Producto</string>
+    <string name="infoClienteGuardada">Datos Guardados</string>
+    <string name="productosDisponibles">Productos Disponibles</string>
+    <string name="productosSeleccionados">Productos Seleccionados</string>
     >>>>>>> 556041ef200699e8833f84ae460a8d245fe92207
 </resources>

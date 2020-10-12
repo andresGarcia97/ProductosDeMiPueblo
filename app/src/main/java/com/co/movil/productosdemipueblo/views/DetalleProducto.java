@@ -1,4 +1,4 @@
-package com.co.movil.productosdemipueblo;
+package com.co.movil.productosdemipueblo.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,19 +7,27 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.logging.Logger;
+import com.co.movil.productosdemipueblo.R;
+import com.co.movil.productosdemipueblo.util.ActionBarUtil;
 
 public class DetalleProducto extends AppCompatActivity {
 
     private EditText editTextCantidadProducto;
     private int cantidadProducto;
+    private ActionBarUtil actionBarUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_producto);
+        initComponents();
+    }
+
+    private void initComponents(){
         editTextCantidadProducto = findViewById(R.id.editTextCantidadProducto);
         cantidadProducto = 0;
+        actionBarUtil = new ActionBarUtil(this);
+        actionBarUtil.setToolBar(getString(R.string.detalleProducto));
     }
 
     public void restarUno(View view) {

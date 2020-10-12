@@ -1,4 +1,4 @@
-package com.co.movil.productosdemipueblo;
+package com.co.movil.productosdemipueblo.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.co.movil.productosdemipueblo.R;
 import com.co.movil.productosdemipueblo.adapters.SolicitudProductoAdapter;
 import com.co.movil.productosdemipueblo.clases.Producto;
+import com.co.movil.productosdemipueblo.util.ActionBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +22,20 @@ public class SolicitarProductos extends AppCompatActivity {
     private SolicitudProductoAdapter adaptadorSolicitudes;
     private TextView textViewTotal;
     protected List<Producto> productos = new ArrayList<>();
+    private ActionBarUtil actionBarUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitar_productos);
+        initComponents();
         crearListaProductos();
         calcularTotal();
+    }
+
+    private void initComponents(){
+        actionBarUtil = new ActionBarUtil(this);
+        actionBarUtil.setToolBar(getString(R.string.productosSeleccionados));
     }
 
     private void crearListaProductos () {

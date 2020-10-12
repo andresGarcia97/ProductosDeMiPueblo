@@ -11,17 +11,17 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".SolicitarProductos"
-            android:parentActivityName=".Productos" />
+            android:name=".views.SolicitarProductos"
+            android:parentActivityName=".views.Productos" />
         <activity
-            android:name=".DatosCliente"
-            android:parentActivityName=".SolicitarProductos" />
-        <activity android:name=".DetalleProducto" />
+            android:name=".views.DatosCliente"
+            android:parentActivityName=".views.SolicitarProductos" />
+        <activity android:name=".views.DetalleProducto" />
         <activity
-            android:name=".Productos"
-            android:parentActivityName=".MainActivity" />
+            android:name=".views.Productos"
+            android:parentActivityName=".views.MainActivity" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

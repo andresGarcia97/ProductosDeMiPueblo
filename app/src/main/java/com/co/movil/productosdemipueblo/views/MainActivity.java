@@ -1,4 +1,4 @@
-package com.co.movil.productosdemipueblo;
+package com.co.movil.productosdemipueblo.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.co.movil.productosdemipueblo.R;
 import com.co.movil.productosdemipueblo.adapters.NegocioAdapter;
 import com.co.movil.productosdemipueblo.clases.Negocio;
 

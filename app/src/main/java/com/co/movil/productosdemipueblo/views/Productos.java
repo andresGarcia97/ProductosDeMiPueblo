@@ -1,4 +1,4 @@
-package com.co.movil.productosdemipueblo;
+package com.co.movil.productosdemipueblo.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.co.movil.productosdemipueblo.R;
 import com.co.movil.productosdemipueblo.adapters.ProductoAdapter;
 import com.co.movil.productosdemipueblo.clases.Producto;
+import com.co.movil.productosdemipueblo.util.ActionBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,15 +23,22 @@ public class Productos extends AppCompatActivity {
     private ProductoAdapter productoAdapter;
     private TextView nombreNegocioProductos;
     private String nombreN = "";
+    private ActionBarUtil actionBarUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productos);
+        initComponents();
         guardarNombre();
         listViewProductos = findViewById(R.id.listViewProductos);
         crearListaProductos();
         selectedProductoItem();
+    }
+
+    private void initComponents(){
+        actionBarUtil = new ActionBarUtil(this);
+        actionBarUtil.setToolBar(getString(R.string.productosDisponibles));
     }
 
     private void guardarNombre() {
