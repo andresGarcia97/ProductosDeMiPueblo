@@ -124,44 +124,35 @@ public class DatosCliente extends AppCompatActivity {
         }
         if (envio) {
             clienteEntidad = converterClienteToClienteEntity(datos);
-            Toast.makeText(getApplicationContext(), R.string.datosValidos, Toast.LENGTH_SHORT).show();
-            if (clienteEntidad != null && insertar) {
-                new InsertCliente().execute(clienteEntidad);
-            } else if (clienteEntidad != null) {
-                new UpdateCliente().execute(clienteEntidad);
+            if (clienteEntidad != null) {
+                new RepositoryCliente(insertar).execute(clienteEntidad);
             }
         }
     }
 
-    private class InsertCliente extends AsyncTask<ClienteEntity, Void, Void> {
+    private class RepositoryCliente extends AsyncTask<ClienteEntity, Void, Void> {
+
+        public boolean operacion;
+
+        public RepositoryCliente(boolean operacion) {
+            super();
+            this.operacion = operacion;
+        }
 
         @Override
         protected Void doInBackground(ClienteEntity... clientes) {
-            DataBaseHelper.getSimpleDB(getApplicationContext()).transaccionesCliente().insert(clientes[0]);
+            if (operacion) {
+                DataBaseHelper.getSimpleDB(getApplicationContext()).transaccionesCliente().insert(clientes[0]);
+            } else {
+                DataBaseHelper.getSimpleDB(getApplicationContext()).transaccionesCliente().update(clientes[0]);
+            }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Toast.makeText(getApplicationContext(), R.string.infoClienteGuardada, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.datosValidos, Toast.LENGTH_SHORT).show();
         }
     }
-
-    private class UpdateCliente extends AsyncTask<ClienteEntity, Void, Void> {
-
-        @Override
-        protected Void doInBackground(ClienteEntity... clientes) {
-            DataBaseHelper.getSimpleDB(getApplicationContext()).transaccionesCliente().update(clientes[0]);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Toast.makeText(getApplicationContext(), R.string.infoClienteGuardada, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
 }

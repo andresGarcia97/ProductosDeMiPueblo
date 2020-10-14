@@ -51,9 +51,9 @@ public class SolicitudProductoAdapter extends BaseAdapter {
             view.setTag(holder);
         }
         holder.imagen.setImageResource(listaProductosOUT.get(i).getImagen());
-        holder.nombre.setText(listaProductosOUT.get(i).getNombre());
-        holder.cantidad.setText(String.valueOf(listaProductosOUT.get(i).getCantidad()));
-        holder.precio.setText(String.valueOf(listaProductosOUT.get(i).getPrecio()));
+        holder.nombre.setText("Nombre:  ".concat(listaProductosOUT.get(i).getNombre()));
+        holder.cantidad.setText("Cantidad: ".concat(String.valueOf(listaProductosOUT.get(i).getCantidad())));
+        holder.precio.setText("Precio:   ".concat(String.valueOf(listaProductosOUT.get(i).getPrecio())));
         return view;
     }
 

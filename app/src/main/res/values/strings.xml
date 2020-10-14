@@ -29,8 +29,11 @@
     <string name="cotizar">Cotizar</string>
     <string name="infoPersonal">Datos Personales</string>
     <string name="detalleProducto">Detalles del Producto</string>
-    <string name="infoClienteGuardada">Datos Guardados</string>
     <string name="productosDisponibles">Productos Disponibles</string>
     <string name="productosSeleccionados">Productos Seleccionados</string>
+    <string name="eliminarProducto">¿Desea eliminar este producto?</string>
+    <string name="aceptarEliminado">Eliminar</string>
+    <string name="ok">OK</string>
+    <string name="solicitudProductosVacia">No tiene productos para comprar</string>
     >>>>>>> 556041ef200699e8833f84ae460a8d245fe92207
 </resources>
