@@ -15,11 +15,11 @@ import java.util.List;
 
 public class ProductoAdapter extends BaseAdapter {
 
-    private final List<Producto[]> listaProdutosIN;
-    private final List<Producto[]> listaProductosOUT;
+    private final List<Producto> listaProdutosIN;
+    private final List<Producto> listaProductosOUT;
     private final LayoutInflater layoutInflater;
 
-    public ProductoAdapter(Context context, List<Producto[]> productos) {
+    public ProductoAdapter(Context context, List<Producto> productos) {
         this.listaProdutosIN = productos;
         this.listaProductosOUT = productos;
         this.layoutInflater = LayoutInflater.from(context);
@@ -31,13 +31,13 @@ public class ProductoAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public Producto getItem(int i) {
         return listaProductosOUT.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
@@ -50,25 +50,19 @@ public class ProductoAdapter extends BaseAdapter {
             holder = new ViewHolder(view);
             view.setTag(holder);
         }
-        holder.imagen.setImageResource(listaProductosOUT.get(i)[0].getImagen());
-        holder.productoName.setText(listaProductosOUT.get(i)[0].getNombre());
-        holder.imagen2.setImageResource(listaProductosOUT.get(i)[1].getImagen());
-        holder.productoName2.setText(listaProductosOUT.get(i)[1].getNombre());
+        holder.imagen.setImageResource(listaProductosOUT.get(i).getImagen());
+        holder.productoName.setText(listaProductosOUT.get(i).getNombre());
         return view;
     }
 
     class ViewHolder {
         ImageView imagen;
         TextView productoName;
-        ImageView imagen2;
-        TextView productoName2;
 
         public ViewHolder(View view) {
             super();
             imagen = view.findViewById(R.id.imagen);
             productoName = view.findViewById(R.id.producto);
-            imagen2 = view.findViewById(R.id.imagen2);
-            productoName2 = view.findViewById(R.id.producto2);
         }
     }
 }

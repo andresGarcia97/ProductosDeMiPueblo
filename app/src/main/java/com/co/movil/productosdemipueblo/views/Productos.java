@@ -2,8 +2,8 @@ package com.co.movil.productosdemipueblo.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,8 +13,8 @@ import com.co.movil.productosdemipueblo.R;
 import com.co.movil.productosdemipueblo.adapters.ProductoAdapter;
 import com.co.movil.productosdemipueblo.clases.Producto;
 import com.co.movil.productosdemipueblo.util.ActionBarUtil;
+import com.co.movil.productosdemipueblo.util.GlobalInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Productos extends AppCompatActivity {
@@ -22,8 +22,8 @@ public class Productos extends AppCompatActivity {
     public ListView listViewProductos;
     private ProductoAdapter productoAdapter;
     private TextView nombreNegocioProductos;
-    private String nombreN = "";
     private ActionBarUtil actionBarUtil;
+    private List<Producto> productos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +36,14 @@ public class Productos extends AppCompatActivity {
         selectedProductoItem();
     }
 
-    private void initComponents(){
+    private void initComponents() {
         actionBarUtil = new ActionBarUtil(this);
         actionBarUtil.setToolBar(getString(R.string.productosDisponibles));
     }
 
     private void guardarNombre() {
         nombreNegocioProductos = findViewById(R.id.nombreNegocioProductos);
-        nombreN = getIntent().getStringExtra("nombreN");
-        if (nombreN != null && !nombreN.isEmpty()) {
-            nombreNegocioProductos.setText(nombreN);
-        }
+        nombreNegocioProductos.setText(GlobalInfo.NEGOCIO.getNombre());
     }
 
     public void lanzarActivitySolicitarProductos(View view) {
@@ -60,24 +57,15 @@ public class Productos extends AppCompatActivity {
     }
 
     private void crearListaProductos() {
-        List<Producto[]> productos = new ArrayList<>();
-        Producto[] productosVector = {new Producto(R.drawable.master_chief, "Master Chief", 1, "n/a", 0),
-                new Producto(R.drawable.callofduty, "CoD", 2, "shooter en primera persona", 0)};
-        productos.add(productosVector);
-        Producto[] productosVector1 = {new Producto(R.drawable.lastofus, "last of US", 1, "supervivencia", 1),
-                new Producto(R.drawable.among, "Impostor", 1, "supervivencia", 1)};
-        productos.add(productosVector1);
-
+        productos = GlobalInfo.NEGOCIO.getProductosDisponibles();
         productoAdapter = new ProductoAdapter(getApplicationContext(), productos);
         listViewProductos.setAdapter(productoAdapter);
     }
 
     private void selectedProductoItem() {
-        listViewProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                lanzarActivityDetalleProducto(view);
-            }
+        listViewProductos.setOnItemClickListener((adapterView, view, i, l) -> {
+            GlobalInfo.PRODUCTO = productoAdapter.getItem(i);
+            lanzarActivityDetalleProducto(view);
         });
     }
 

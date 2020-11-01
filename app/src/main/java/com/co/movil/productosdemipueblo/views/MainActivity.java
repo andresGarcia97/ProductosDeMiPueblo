@@ -3,7 +3,6 @@ package com.co.movil.productosdemipueblo.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.co.movil.productosdemipueblo.R;
 import com.co.movil.productosdemipueblo.adapters.NegocioAdapter;
 import com.co.movil.productosdemipueblo.clases.Negocio;
+import com.co.movil.productosdemipueblo.clases.Producto;
+import com.co.movil.productosdemipueblo.util.ActionBarUtil;
+import com.co.movil.productosdemipueblo.util.GlobalInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,41 +21,59 @@ public class MainActivity extends AppCompatActivity {
 
     public ListView listViewNegocios;
     private NegocioAdapter adaptadorNegocio;
-    private String nombreNegocio = "";
     public List<Negocio> negocios;
+    private List<Producto> productos;
+    private ActionBarUtil actionBarUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initComponents();
         listViewNegocios = findViewById(R.id.listViewNegocios);
         crearListaNegocios();
         selectedNegocioItem();
     }
 
+    private void initComponents(){
+        actionBarUtil = new ActionBarUtil(this);
+        actionBarUtil.setToolBar(getString(R.string.texto_inicio));
+    }
+
     private void crearListaNegocios() {
         negocios = new ArrayList<>();
-        negocios.add(new Negocio(R.drawable.among, "Among US, trust nobody", "Una nave espacial", "suministros y tareas"));
-        negocios.add(new Negocio(R.drawable.callofduty, "Call of Duty, kill everybody", "Un mundo en guerra", "shooter en primera persona"));
-        negocios.add(new Negocio(R.drawable.lastofus, "Last of US, survive", "Un mundo post apocaliptico", "supervivencia"));
-        negocios.add(new Negocio(R.drawable.master_chief, "Halo, the best of Xbox", "viajes espaciales", "ciencia ficcion"));
+        productos = new ArrayList<>();
+
+        productos.add(new Producto(R.drawable.master_chief, "Master Chief", 1, "Spartans", 4000));
+        productos.add(new Producto(R.drawable.callofduty, "CoD", 1, "shooter en primera persona", 5000));
+        productos.add(new Producto(R.drawable.gearsofwar, "Lokus", 1, "Covenant", 2200));
+        productos.add(new Producto(R.drawable.among, "Impostor", 1, "supervivencia", 2000));
+        productos.add(new Producto(R.drawable.lastofus, "last of US", 1, "supervivencia", 3500));
+
+        List<Producto> productos1 = productos.subList(0,productos.size()-1);
+        List<Producto> productos2 = productos.subList(0,productos.size()-2);
+        List<Producto> productos3 = productos.subList(0,productos.size()-3);
+        List<Producto> productos4 = productos.subList(0,productos.size()-4);
+
+        negocios.add(new Negocio(R.drawable.among, "Among US, trust nobody", "Una nave espacial", "suministros y tareas", productos3));
+        negocios.add(new Negocio(R.drawable.callofduty, "Call of Duty, kill everybody", "Un mundo en guerra", "shooter en primera persona", productos));
+        negocios.add(new Negocio(R.drawable.lastofus, "Last of US, survive", "Un mundo post apocaliptico", "supervivencia", productos1));
+        negocios.add(new Negocio(R.drawable.master_chief, "Halo, the best of Xbox", "viajes espaciales", "ciencia ficcion", productos4));
+        negocios.add(new Negocio(R.drawable.gearsofwar, "Gears, Kill the Covenant", "guerras espaciales", "ciencia ficcion", productos2));
+
         adaptadorNegocio = new NegocioAdapter(getApplicationContext(), negocios);
         listViewNegocios.setAdapter(adaptadorNegocio);
     }
 
     private void lanzarActivityProductos(View view) {
         Intent intent = new Intent(this, Productos.class);
-        intent.putExtra("nombreN",nombreNegocio);
         startActivity(intent);
     }
 
     private void selectedNegocioItem() {
-        listViewNegocios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                nombreNegocio = negocios.get(i).getNombre();
-                lanzarActivityProductos(view);
-            }
+        listViewNegocios.setOnItemClickListener((adapterView, view, i, l) -> {
+            GlobalInfo.NEGOCIO = negocios.get(i);
+            lanzarActivityProductos(view);
         });
     }
 }

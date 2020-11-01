@@ -7,9 +7,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="98dp"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/imageViewProductoSolicitud"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="91dp"
+                android:layout_height="87dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="2dp"

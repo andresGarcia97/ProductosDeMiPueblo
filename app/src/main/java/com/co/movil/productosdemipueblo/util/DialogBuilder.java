@@ -18,9 +18,7 @@ public class DialogBuilder {
     public Dialog createNewAlertDialog(Context clase, int titulo) {
         AlertDialog dlg = new AlertDialog.Builder(clase)
                 .setTitle(titulo)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    }
+                .setPositiveButton(R.string.ok, (dialog, id) -> {
                 })
                 .create();
         return dlg;
