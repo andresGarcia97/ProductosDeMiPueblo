@@ -15,6 +15,7 @@ import com.co.movil.productosdemipueblo.entities.ClienteEntity;
 import com.co.movil.productosdemipueblo.persistencia.DataBaseHelper;
 import com.co.movil.productosdemipueblo.util.ActionBarUtil;
 import com.co.movil.productosdemipueblo.util.GlobalAction;
+import com.co.movil.productosdemipueblo.util.GlobalInfo;
 
 import java.util.List;
 
@@ -39,6 +40,14 @@ public class DatosCliente extends AppCompatActivity {
         setContentView(R.layout.activity_datos_cliente);
         initComponents();
         consultarCliente();
+        verificarLista();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        consultarCliente();
+        verificarLista();
     }
 
     private void initComponents() {
@@ -50,6 +59,13 @@ public class DatosCliente extends AppCompatActivity {
         editTextIdentificacionCliente = findViewById(R.id.editTextIdentificacionCliente);
         editTextDireccionCliente = findViewById(R.id.editTextDireccionCliente);
         editTextTelefonoCliente = findViewById(R.id.editTextTelefonoCliente);
+    }
+
+    private void verificarLista() {
+        if (GlobalInfo.PRODUCTOS.isEmpty()) {
+            Toast.makeText(getApplicationContext(), R.string.solicitudProductosVacia, Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 
     private void consultarCliente() {
@@ -130,6 +146,7 @@ public class DatosCliente extends AppCompatActivity {
                 new RepositoryCliente(insertar).execute(clienteEntidad);
                 GlobalAction.reiniciarValores();
                 lanzarActivityMain();
+                finish();
             }
         }
     }

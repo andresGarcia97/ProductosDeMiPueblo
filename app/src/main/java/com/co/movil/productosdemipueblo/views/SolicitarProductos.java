@@ -42,6 +42,15 @@ public class SolicitarProductos extends AppCompatActivity {
         productoSeleccionadoEliminar();
     }
 
+    @Override
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    protected void onResume() {
+        super.onResume();
+        crearListaProductos();
+        calcularTotal();
+        productoSeleccionadoEliminar();
+    }
+
     private void initComponents() {
         actionBarUtil = new ActionBarUtil(this);
         actionBarUtil.setToolBar(getString(R.string.productosSeleccionados));

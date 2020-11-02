@@ -33,6 +33,12 @@ public class DetalleProducto extends AppCompatActivity {
         setLayout();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setLayout();
+    }
+
     private void initComponents() {
         editTextCantidadProducto = findViewById(R.id.editTextCantidadProducto);
         cantidadProducto = 1;
@@ -40,16 +46,20 @@ public class DetalleProducto extends AppCompatActivity {
         editTextCantidadProducto.setText(String.valueOf(cantidadProducto));
         actionBarUtil = new ActionBarUtil(this);
         actionBarUtil.setToolBar(getString(R.string.detalleProducto));
-    }
-
-    private void setLayout() {
         imageViewProductoDetalle = findViewById(R.id.imageViewProductoDetalle);
         textViewDescripcionProducto = findViewById(R.id.textViewDescripcionProducto);
         textViewPrecioProducto = findViewById(R.id.textViewPrecioProducto);
+    }
 
-        imageViewProductoDetalle.setImageResource(GlobalInfo.PRODUCTO.getImagen());
-        textViewDescripcionProducto.setText(GlobalInfo.PRODUCTO.getDescripcion());
-        textViewPrecioProducto.setText(String.valueOf(GlobalInfo.PRODUCTO.getPrecio()));
+    private void setLayout() {
+        if (GlobalInfo.PRODUCTO.getImagen() == 0 || GlobalInfo.PRODUCTO.getDescripcion() == null
+                || GlobalInfo.PRODUCTO.getPrecio() == 0) {
+            finish();
+        } else {
+            imageViewProductoDetalle.setImageResource(GlobalInfo.PRODUCTO.getImagen());
+            textViewDescripcionProducto.setText(GlobalInfo.PRODUCTO.getDescripcion());
+            textViewPrecioProducto.setText(String.valueOf(GlobalInfo.PRODUCTO.getPrecio()));
+        }
     }
 
     public void restarUno(View view) {

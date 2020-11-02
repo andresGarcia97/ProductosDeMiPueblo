@@ -43,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
         selectedNegocioItem();
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        mostrarOcultarCambiarNegocio();
+        crearListaNegocios();
+        selectedNegocioItem();
+    }
+
     private void initComponents() {
         actionBarUtil = new ActionBarUtil(this);
         actionBarUtil.setToolBar(getString(R.string.texto_inicio));
@@ -59,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void crearListaNegocios() {
+        GlobalInfo.NEGOCIOS.clear();
 
         if (!GlobalInfo.NEGOCIOSELECCIONADO) {
             productos = new ArrayList<>();

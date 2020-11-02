@@ -29,8 +29,13 @@ public class Productos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productos);
         initComponents();
-        guardarNombre();
-        listViewProductos = findViewById(R.id.listViewProductos);
+        crearListaProductos();
+        selectedProductoItem();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         crearListaProductos();
         selectedProductoItem();
     }
@@ -38,9 +43,7 @@ public class Productos extends AppCompatActivity {
     private void initComponents() {
         actionBarUtil = new ActionBarUtil(this);
         actionBarUtil.setToolBar(getString(R.string.productosDisponibles));
-    }
-
-    private void guardarNombre() {
+        listViewProductos = findViewById(R.id.listViewProductos);
         nombreNegocioProductos = findViewById(R.id.nombreNegocioProductos);
         nombreNegocioProductos.setText(GlobalInfo.NEGOCIO.getNombre());
     }
@@ -56,9 +59,13 @@ public class Productos extends AppCompatActivity {
     }
 
     private void crearListaProductos() {
-        productos = GlobalInfo.NEGOCIO.getProductosDisponibles();
-        productoAdapter = new ProductoAdapter(getApplicationContext(), productos);
-        listViewProductos.setAdapter(productoAdapter);
+        if (GlobalInfo.NEGOCIO.getProductosDisponibles() == null || GlobalInfo.NEGOCIO.getProductosDisponibles().isEmpty()) {
+            finish();
+        } else {
+            productos = GlobalInfo.NEGOCIO.getProductosDisponibles();
+            productoAdapter = new ProductoAdapter(getApplicationContext(), productos);
+            listViewProductos.setAdapter(productoAdapter);
+        }
     }
 
     private void selectedProductoItem() {
