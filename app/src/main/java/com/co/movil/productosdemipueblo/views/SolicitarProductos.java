@@ -89,6 +89,7 @@ public class SolicitarProductos extends AppCompatActivity {
         return dlg;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void productoSeleccionadoEliminar() {
         listViewSolicitudProductos.setOnItemClickListener((adapterView, view, i, l) -> createNewDialog(i).show());
     }

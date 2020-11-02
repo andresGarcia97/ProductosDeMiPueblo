@@ -35,5 +35,8 @@
     <string name="aceptarEliminado">Eliminar</string>
     <string name="ok">OK</string>
     <string name="solicitudProductosVacia">No tiene productos para comprar</string>
+    <string name="cambiarNegocio">Cambiar Negocio</string>
+    <string name="cambiarNegocioPregunta">¿ Cambiar Negocio ?</string>
+    <string name="confirmacionCambiarNegocio">Si cambia el Negocio, la lista de productos se perdera</string>
     >>>>>>> 556041ef200699e8833f84ae460a8d245fe92207
 </resources>

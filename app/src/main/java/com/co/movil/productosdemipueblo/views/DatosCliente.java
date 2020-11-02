@@ -1,5 +1,6 @@
 package com.co.movil.productosdemipueblo.views;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.co.movil.productosdemipueblo.clases.Cliente;
 import com.co.movil.productosdemipueblo.entities.ClienteEntity;
 import com.co.movil.productosdemipueblo.persistencia.DataBaseHelper;
 import com.co.movil.productosdemipueblo.util.ActionBarUtil;
+import com.co.movil.productosdemipueblo.util.GlobalAction;
 
 import java.util.List;
 
@@ -126,8 +128,15 @@ public class DatosCliente extends AppCompatActivity {
             clienteEntidad = converterClienteToClienteEntity(datos);
             if (clienteEntidad != null) {
                 new RepositoryCliente(insertar).execute(clienteEntidad);
+                GlobalAction.reiniciarValores();
+                lanzarActivityMain();
             }
         }
+    }
+
+    private void lanzarActivityMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private class RepositoryCliente extends AsyncTask<ClienteEntity, Void, Void> {

@@ -93,9 +93,12 @@ public class DetalleProducto extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void agregarProducto(View view) {
+        if (cantidadProducto <= 0) {
+            cantidadProducto = 1;
+        }
         GlobalInfo.PRODUCTO.setCantidad(cantidadProducto);
         evitarDuplicados();
-        if(!duplicado){
+        if (!duplicado) {
             GlobalInfo.PRODUCTOS.add(GlobalInfo.PRODUCTO);
         }
         lanzarActivityProductos();

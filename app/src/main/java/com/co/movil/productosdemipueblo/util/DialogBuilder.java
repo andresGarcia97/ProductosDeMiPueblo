@@ -3,7 +3,6 @@ package com.co.movil.productosdemipueblo.util;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 
 import com.co.movil.productosdemipueblo.R;
 
