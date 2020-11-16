@@ -75,4 +75,10 @@ public class Productos extends AppCompatActivity {
         });
     }
 
+    @Override
+    public String toString() {
+        return "Productos{" +
+                "productos=" + productos +
+                '}';
+    }
 }

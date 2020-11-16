@@ -1,6 +1,8 @@
 package com.co.movil.productosdemipueblo.views;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.co.movil.productosdemipueblo.R;
 import com.co.movil.productosdemipueblo.clases.Cliente;
+import com.co.movil.productosdemipueblo.clases.Producto;
 import com.co.movil.productosdemipueblo.entities.ClienteEntity;
 import com.co.movil.productosdemipueblo.persistencia.DataBaseHelper;
 import com.co.movil.productosdemipueblo.util.ActionBarUtil;
@@ -33,6 +36,7 @@ public class DatosCliente extends AppCompatActivity {
     private ClienteEntity clienteEntidad;
     protected Cliente clienteBuscado;
     private boolean insertar = false;
+    Cliente datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +120,7 @@ public class DatosCliente extends AppCompatActivity {
 
         boolean envio = true;
 
-        Cliente datos = new Cliente(obtener().obtenerTexto(editTextNombreCliente), obtener().obtenerTexto(editTextApellidosCliente),
+        this.datos = new Cliente(obtener().obtenerTexto(editTextNombreCliente), obtener().obtenerTexto(editTextApellidosCliente),
                 obtener().obtenerTexto(editTextIdentificacionCliente), obtener().obtenerTexto(editTextDireccionCliente),
                 obtener().obtenerTexto(editTextTelefonoCliente));
 
@@ -143,10 +147,19 @@ public class DatosCliente extends AppCompatActivity {
         if (envio) {
             clienteEntidad = converterClienteToClienteEntity(datos);
             if (clienteEntidad != null) {
+                boolean install = appInstallOrNot("com.whatsapp");
+                if(install){
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("https://api.whatsapp.com/send?phone="+GlobalInfo.NEGOCIO.getTelefono()+"&text="+messageWhatsApp()));
+                    startActivity(intent);
+
+                }else{
+                    Toast.makeText(DatosCliente.this, "Wta no", Toast.LENGTH_SHORT).show();
+                }
                 new RepositoryCliente(insertar).execute(clienteEntidad);
                 GlobalAction.reiniciarValores();
-                lanzarActivityMain();
-                finish();
+               // lanzarActivityMain();
+                //finish();
             }
         }
     }
@@ -181,4 +194,49 @@ public class DatosCliente extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), R.string.datosValidos, Toast.LENGTH_SHORT).show();
         }
     }
+    private boolean appInstallOrNot(String url){
+        PackageManager packageManager =getPackageManager();
+        boolean appInstall = false;
+        try {
+            packageManager.getPackageInfo(url, PackageManager.GET_ACTIVITIES);
+            appInstall = true;
+
+        }catch (PackageManager.NameNotFoundException e){
+
+        }
+        return appInstall;
+    }
+    private String messageWhatsApp(){
+        String products = getProductList();
+        String cliente = getDataClient();
+        return "*PRODUCTOS DE MI PUEBLO*\n"
+                .concat("*Negocio:* ").concat(GlobalInfo.NEGOCIO.getNombre()).concat("\n\n")
+                .concat(products).concat("\n")
+                .concat(cliente);
+
+    }
+    private String getProductList(){
+        String productos = "*_Lista productos:_*\n";
+        int p=1;
+            for (Producto producto1: GlobalInfo.PRODUCTOS) {
+                productos = productos
+                        .concat("*Producto"+p+":* ").concat(producto1.getNombre()).concat("\n")
+                        .concat("*Descripcion:* ").concat(producto1.getDescripcion()).concat("\n")
+                        .concat("*Cantidad:* ").concat(String.valueOf(producto1.getCantidad())).concat("\n")
+                        .concat("*Precio:* ").concat(String.valueOf(producto1.getPrecio())).concat("\n")
+                        .concat("*--------*\n");
+                p++;
+            }
+        return productos;
+    }
+    private String getDataClient(){
+        return "*_DATOS SOLICITANTE:_* \n"
+                .concat("*Nombre:* ").concat(this.datos.getNombre()).concat("\n")
+                .concat("*Apellidos:* ").concat(this.datos.getApellidos()).concat("\n")
+                .concat("*Cédula:* ").concat(this.datos.getIdentificacion()).concat("\n")
+                .concat("*Direccion:* ").concat(this.datos.getDireccion()).concat("\n")
+                .concat("*Teléfono:* ").concat(this.datos.getTelefono()).concat("\n");
+
+    }
+
 }

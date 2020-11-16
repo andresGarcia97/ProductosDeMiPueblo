@@ -1,4 +1,4 @@
-package com.co.movil.productosdemipueblo.views;
+ package com.co.movil.productosdemipueblo.views;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -82,11 +82,11 @@ public class MainActivity extends AppCompatActivity {
             List<Producto> productos3 = productos.subList(0, productos.size() - 3);
             List<Producto> productos4 = productos.subList(0, productos.size() - 4);
 
-            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.among, "Among US, trust nobody", "Una nave espacial", "suministros y tareas", productos3));
-            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.callofduty, "Call of Duty, kill everybody", "Un mundo en guerra", "shooter en primera persona", productos));
-            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.lastofus, "Last of US, survive", "Un mundo post apocaliptico", "supervivencia", productos1));
-            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.master_chief, "Halo, the best of Xbox", "viajes espaciales", "ciencia ficcion", productos4));
-            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.gearsofwar, "Gears, Kill the Covenant", "guerras espaciales", "ciencia ficcion", productos2));
+            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.among, "Among US, trust nobody", "Una nave espacial", "suministros y tareas", productos3, "+573137528917"));
+            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.callofduty, "Call of Duty, kill everybody", "Un mundo en guerra", "shooter en primera persona", productos, "+573007081275"));
+            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.lastofus, "Last of US, survive", "Un mundo post apocaliptico", "supervivencia", productos1, "+573007081275"));
+            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.master_chief, "Halo, the best of Xbox", "viajes espaciales", "ciencia ficcion", productos4, "+573137528917"));
+            GlobalInfo.NEGOCIOS.add(new Negocio(R.drawable.gearsofwar, "Gears, Kill the Covenant", "guerras espaciales", "ciencia ficcion", productos2, "+573137528917"));
 
             negocios = GlobalInfo.NEGOCIOS;
         } else {

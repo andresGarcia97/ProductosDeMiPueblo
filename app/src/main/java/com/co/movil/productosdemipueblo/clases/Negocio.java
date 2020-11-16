@@ -18,5 +18,6 @@ public class Negocio {
     private String direccion;
     private String descripcion;
     private List<Producto> productosDisponibles;
+    private String telefono;
 
 }
