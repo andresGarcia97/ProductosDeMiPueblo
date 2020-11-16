@@ -218,16 +218,22 @@ public class DatosCliente extends AppCompatActivity {
     private String getProductList(){
         String productos = "*_Lista productos:_*\n";
         int p=1;
+        int total =0;
             for (Producto producto1: GlobalInfo.PRODUCTOS) {
+
+                int totalProducto = producto1.getCantidad()*producto1.getPrecio();
+
                 productos = productos
                         .concat("*Producto"+p+":* ").concat(producto1.getNombre()).concat("\n")
                         .concat("*Descripcion:* ").concat(producto1.getDescripcion()).concat("\n")
                         .concat("*Cantidad:* ").concat(String.valueOf(producto1.getCantidad())).concat("\n")
                         .concat("*Precio:* ").concat(String.valueOf(producto1.getPrecio())).concat("\n")
-                        .concat("*--------*\n");
+                        .concat("*Total producto:* ").concat(String.valueOf(totalProducto)).concat("\n")
+                        .concat("*------------*").concat("\n");
+                       total = total+ totalProducto;
                 p++;
             }
-        return productos;
+        return productos.concat("*_Total pedido:_* ").concat(String.valueOf(total)).concat("\n");
     }
     private String getDataClient(){
         return "*_DATOS SOLICITANTE:_* \n"
@@ -236,7 +242,6 @@ public class DatosCliente extends AppCompatActivity {
                 .concat("*Cédula:* ").concat(this.datos.getIdentificacion()).concat("\n")
                 .concat("*Direccion:* ").concat(this.datos.getDireccion()).concat("\n")
                 .concat("*Teléfono:* ").concat(this.datos.getTelefono()).concat("\n");
-
     }
 
 }
