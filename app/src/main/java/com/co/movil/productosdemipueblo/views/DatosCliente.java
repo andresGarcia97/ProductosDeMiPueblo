@@ -154,12 +154,13 @@ public class DatosCliente extends AppCompatActivity {
                     startActivity(intent);
 
                 }else{
-                    Toast.makeText(DatosCliente.this, "Wta no", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DatosCliente.this, "No tiene WhatsApp Instalado.", Toast.LENGTH_SHORT).show();
                 }
                 new RepositoryCliente(insertar).execute(clienteEntidad);
-                GlobalAction.reiniciarValores();
-               // lanzarActivityMain();
-                //finish();
+              //  GlobalAction.reiniciarValores();
+                //lanzarActivityMain();
+                finish();
+
             }
         }
     }
@@ -209,7 +210,7 @@ public class DatosCliente extends AppCompatActivity {
     private String messageWhatsApp(){
         String products = getProductList();
         String cliente = getDataClient();
-        return "*PRODUCTOS DE MI PUEBLO*\n"
+        return "*PRODUCTOS DE MI PUEBLO*".concat("\n")
                 .concat("*Negocio:* ").concat(GlobalInfo.NEGOCIO.getNombre()).concat("\n\n")
                 .concat(products).concat("\n")
                 .concat(cliente);
