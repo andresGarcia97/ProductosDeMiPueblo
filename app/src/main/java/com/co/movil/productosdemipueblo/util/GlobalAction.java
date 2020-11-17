@@ -9,5 +9,6 @@ public class GlobalAction {
         GlobalInfo.PRODUCTOS.clear();
         GlobalInfo.NEGOCIOS.clear();
         GlobalInfo.NEGOCIO = new Negocio();
+        GlobalInfo.PEDIDOENVIADO = false;
     }
 }

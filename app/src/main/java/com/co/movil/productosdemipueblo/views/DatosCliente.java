@@ -17,7 +17,6 @@ import com.co.movil.productosdemipueblo.clases.Producto;
 import com.co.movil.productosdemipueblo.entities.ClienteEntity;
 import com.co.movil.productosdemipueblo.persistencia.DataBaseHelper;
 import com.co.movil.productosdemipueblo.util.ActionBarUtil;
-import com.co.movil.productosdemipueblo.util.GlobalAction;
 import com.co.movil.productosdemipueblo.util.GlobalInfo;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class DatosCliente extends AppCompatActivity {
     private ClienteEntity clienteEntidad;
     protected Cliente clienteBuscado;
     private boolean insertar = false;
-    Cliente datos;
+    protected Cliente datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,26 +147,18 @@ public class DatosCliente extends AppCompatActivity {
             clienteEntidad = converterClienteToClienteEntity(datos);
             if (clienteEntidad != null) {
                 boolean install = appInstallOrNot("com.whatsapp");
-                if(install){
+                if (install) {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("https://api.whatsapp.com/send?phone="+GlobalInfo.NEGOCIO.getTelefono()+"&text="+messageWhatsApp()));
+                    intent.setData(Uri.parse("https://api.whatsapp.com/send?phone=" + GlobalInfo.NEGOCIO.getTelefono() + "&text=" + messageWhatsApp()));
                     startActivity(intent);
-
-                }else{
+                } else {
                     Toast.makeText(DatosCliente.this, "No tiene WhatsApp Instalado.", Toast.LENGTH_SHORT).show();
                 }
                 new RepositoryCliente(insertar).execute(clienteEntidad);
-              //  GlobalAction.reiniciarValores();
-                //lanzarActivityMain();
                 finish();
-
+                GlobalInfo.PEDIDOENVIADO = true;
             }
         }
-    }
-
-    private void lanzarActivityMain() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     private class RepositoryCliente extends AsyncTask<ClienteEntity, Void, Void> {
@@ -195,19 +186,21 @@ public class DatosCliente extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), R.string.datosValidos, Toast.LENGTH_SHORT).show();
         }
     }
-    private boolean appInstallOrNot(String url){
-        PackageManager packageManager =getPackageManager();
+
+    private boolean appInstallOrNot(String url) {
+        PackageManager packageManager = getPackageManager();
         boolean appInstall = false;
         try {
             packageManager.getPackageInfo(url, PackageManager.GET_ACTIVITIES);
             appInstall = true;
 
-        }catch (PackageManager.NameNotFoundException e){
+        } catch (PackageManager.NameNotFoundException e) {
 
         }
         return appInstall;
     }
-    private String messageWhatsApp(){
+
+    private String messageWhatsApp() {
         String products = getProductList();
         String cliente = getDataClient();
         return "*PRODUCTOS DE MI PUEBLO*".concat("\n")
@@ -216,27 +209,29 @@ public class DatosCliente extends AppCompatActivity {
                 .concat(cliente);
 
     }
-    private String getProductList(){
+
+    private String getProductList() {
         String productos = "*_Lista productos:_*\n";
-        int p=1;
-        int total =0;
-            for (Producto producto1: GlobalInfo.PRODUCTOS) {
+        int p = 1;
+        int total = 0;
+        for (Producto producto1 : GlobalInfo.PRODUCTOS) {
 
-                int totalProducto = producto1.getCantidad()*producto1.getPrecio();
+            int totalProducto = producto1.getCantidad() * producto1.getPrecio();
 
-                productos = productos
-                        .concat("*Producto"+p+":* ").concat(producto1.getNombre()).concat("\n")
-                        .concat("*Descripcion:* ").concat(producto1.getDescripcion()).concat("\n")
-                        .concat("*Cantidad:* ").concat(String.valueOf(producto1.getCantidad())).concat("\n")
-                        .concat("*Precio:* ").concat(String.valueOf(producto1.getPrecio())).concat("\n")
-                        .concat("*Total producto:* ").concat(String.valueOf(totalProducto)).concat("\n")
-                        .concat("*------------*").concat("\n");
-                       total = total+ totalProducto;
-                p++;
-            }
+            productos = productos
+                    .concat("*Producto" + p + ":* ").concat(producto1.getNombre()).concat("\n")
+                    .concat("*Descripcion:* ").concat(producto1.getDescripcion()).concat("\n")
+                    .concat("*Cantidad:* ").concat(String.valueOf(producto1.getCantidad())).concat("\n")
+                    .concat("*Precio:* ").concat(String.valueOf(producto1.getPrecio())).concat("\n")
+                    .concat("*Total producto:* ").concat(String.valueOf(totalProducto)).concat("\n")
+                    .concat("*------------*").concat("\n");
+            total = total + totalProducto;
+            p++;
+        }
         return productos.concat("*_Total pedido:_* ").concat(String.valueOf(total)).concat("\n");
     }
-    private String getDataClient(){
+
+    private String getDataClient() {
         return "*_DATOS SOLICITANTE:_* \n"
                 .concat("*Nombre:* ").concat(this.datos.getNombre()).concat("\n")
                 .concat("*Apellidos:* ").concat(this.datos.getApellidos()).concat("\n")

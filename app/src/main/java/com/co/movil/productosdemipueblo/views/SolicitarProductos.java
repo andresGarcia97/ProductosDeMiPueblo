@@ -16,7 +16,7 @@ import com.co.movil.productosdemipueblo.R;
 import com.co.movil.productosdemipueblo.adapters.SolicitudProductoAdapter;
 import com.co.movil.productosdemipueblo.clases.Producto;
 import com.co.movil.productosdemipueblo.util.ActionBarUtil;
-import com.co.movil.productosdemipueblo.util.DialogBuilder;
+import com.co.movil.productosdemipueblo.util.GlobalAction;
 import com.co.movil.productosdemipueblo.util.GlobalInfo;
 
 import java.util.ArrayList;
@@ -40,6 +40,7 @@ public class SolicitarProductos extends AppCompatActivity {
         crearListaProductos();
         calcularTotal();
         productoSeleccionadoEliminar();
+        revisarPedidoEnviado();
     }
 
     @Override
@@ -49,11 +50,19 @@ public class SolicitarProductos extends AppCompatActivity {
         crearListaProductos();
         calcularTotal();
         productoSeleccionadoEliminar();
+        revisarPedidoEnviado();
     }
 
     private void initComponents() {
         actionBarUtil = new ActionBarUtil(this);
         actionBarUtil.setToolBar(getString(R.string.productosSeleccionados));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void revisarPedidoEnviado() {
+        if (GlobalInfo.PEDIDOENVIADO) {
+            createNewDialogContinue().show();
+        }
     }
 
     private void crearListaProductos() {
@@ -70,13 +79,39 @@ public class SolicitarProductos extends AppCompatActivity {
         textViewTotal.setText("Total: " + total);
     }
 
+
     public void lanzarActivityDatosCliente(View view) {
         if (productos.isEmpty()) {
-            DialogBuilder.obtener().createNewAlertDialog(this, R.string.solicitudProductosVacia).show();
+            AlertDialog dlg = new AlertDialog.Builder(this)
+                    .setTitle(R.string.solicitudProductosVacia)
+                    .setPositiveButton(R.string.ok, (dialog, id) -> {
+                    }).create();
+            dlg.show();
         } else {
             Intent intent = new Intent(this, DatosCliente.class);
             startActivity(intent);
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private Dialog createNewDialogContinue() {
+        AlertDialog dlg = new AlertDialog.Builder(SolicitarProductos.this)
+                .setTitle(R.string.continuarCompra)
+                .setMessage(R.string.volverEnviarCompra)
+                .setPositiveButton(R.string.aceptarYcontinuar, (dialog, id) -> {
+                    GlobalInfo.PEDIDOENVIADO = false;
+                })
+                .setNegativeButton(R.string.inicio, (dialog, id) -> {
+                    GlobalAction.reiniciarValores();
+                    lanzarActivityMain();
+                })
+                .create();
+        return dlg;
+    }
+
+    private void lanzarActivityMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
