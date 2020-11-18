@@ -40,7 +40,7 @@
     <string name="confirmacionCambiarNegocio">Si cambia el Negocio, la lista de productos se perdera</string>
     <string name="volverEnviarCompra">" ¿ Desea volver a enviar el pedido ?"</string>
     <string name="continuarCompra">Usted ya envio un pedido</string>
-    <string name="aceptarYcontinuar">"Continuar"</string>
-    <string name="inicio">Inicio</string>
-    >>>>>>> 556041ef200699e8833f84ae460a8d245fe92207
+    <string name="aceptarYcontinuar">"SÍ"</string>
+    <string name="inicio">NO</string>
+
 </resources>
