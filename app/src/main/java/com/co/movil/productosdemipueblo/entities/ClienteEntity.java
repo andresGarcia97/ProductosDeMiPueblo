@@ -7,6 +7,13 @@ import androidx.room.PrimaryKey;
 
 import com.co.movil.productosdemipueblo.persistencia.Tabla;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(tableName = Tabla.CLIENTES)
 public class ClienteEntity {
 
@@ -30,53 +37,4 @@ public class ClienteEntity {
 
     @ColumnInfo(name = "telefono")
     private String telefono;
-
-    @NonNull
-    public Integer getId() {
-        return id;
-    }
-
-    public String getIdentificacion() {
-        return identificacion;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setId(@NonNull Integer id) {
-        this.id = id;
-    }
-
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
 }

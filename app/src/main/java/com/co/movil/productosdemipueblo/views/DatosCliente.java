@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.co.movil.productosdemipueblo.R;
-import com.co.movil.productosdemipueblo.clases.Cliente;
 import com.co.movil.productosdemipueblo.clases.Producto;
 import com.co.movil.productosdemipueblo.entities.ClienteEntity;
 import com.co.movil.productosdemipueblo.persistencia.DataBaseHelper;
@@ -33,9 +32,9 @@ public class DatosCliente extends AppCompatActivity {
     private DataBaseHelper db;
     private ActionBarUtil actionBarUtil;
     private ClienteEntity clienteEntidad;
-    protected Cliente clienteBuscado;
+    protected ClienteEntity clienteBuscado;
     private boolean insertar = false;
-    protected Cliente datos;
+    protected ClienteEntity datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,20 +76,12 @@ public class DatosCliente extends AppCompatActivity {
             insertar = true;
         } else {
             clienteEntidad = clientes.get(0);
-            clienteBuscado = converterClienteEntityToCliente(clienteEntidad, clienteBuscado);
+            clienteBuscado = converterClienteToClienteEntity(clienteEntidad);
             cambiarDatosCliente(clienteBuscado);
         }
     }
 
-    private Cliente converterClienteEntityToCliente(ClienteEntity entity, Cliente cliente) {
-        if (cliente == null) {
-            return new Cliente(entity.getNombre(), entity.getApellidos(), entity.getIdentificacion(), entity.getDireccion(), entity.getTelefono());
-        } else {
-            return null;
-        }
-    }
-
-    private ClienteEntity converterClienteToClienteEntity(Cliente cliente) {
+    private ClienteEntity converterClienteToClienteEntity(ClienteEntity cliente) {
         if (cliente != null) {
             ClienteEntity entidad = new ClienteEntity();
             entidad.setId(0);
@@ -105,7 +96,7 @@ public class DatosCliente extends AppCompatActivity {
         }
     }
 
-    protected void cambiarDatosCliente(Cliente cliente) {
+    protected void cambiarDatosCliente(ClienteEntity cliente) {
         if (cliente != null) {
             editTextNombreCliente.setText(cliente.getNombre());
             editTextApellidosCliente.setText(cliente.getApellidos());
@@ -119,8 +110,8 @@ public class DatosCliente extends AppCompatActivity {
 
         boolean envio = true;
 
-        this.datos = new Cliente(obtener().obtenerTexto(editTextNombreCliente), obtener().obtenerTexto(editTextApellidosCliente),
-                obtener().obtenerTexto(editTextIdentificacionCliente), obtener().obtenerTexto(editTextDireccionCliente),
+        this.datos = new ClienteEntity(0, obtener().obtenerTexto(editTextIdentificacionCliente), obtener().obtenerTexto(editTextNombreCliente),
+                obtener().obtenerTexto(editTextApellidosCliente), obtener().obtenerTexto(editTextDireccionCliente),
                 obtener().obtenerTexto(editTextTelefonoCliente));
 
         if (datos.getNombre().isEmpty()) {

@@ -36,7 +36,6 @@ public class ClienteNegocioImpl {
             @Override
             public void onResponse(Call<List<Negocio>> call, Response<List<Negocio>> response) {
                 List<Negocio> negocios = response.body();
-                assert negocios != null;
                 for (int i = 0; i < negocios.size(); i++) {
                     for (int j = 0; j < negocios.get(i).getProductosDisponibles().size(); j++) {
                         GlobalInfo.NEGOCIOS.get(i).getProductosDisponibles().get(j).setCantidadDisponible(negocios.get(i).getProductosDisponibles().get(j).getCantidad());

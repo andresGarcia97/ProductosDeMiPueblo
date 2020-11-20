@@ -40,8 +40,8 @@
     <string name="confirmacionCambiarNegocio">Si cambia el Negocio, la lista de productos se perdera</string>
     <string name="volverEnviarCompra">" ¿ Desea volver a enviar el pedido ?"</string>
     <string name="continuarCompra">Usted ya envio un pedido</string>
-    <string name="aceptarYcontinuar">"NO"</string>
-    <string name="inicio">SÍ</string>
+    <string name="aceptarYcontinuar">"SI"</string>
+    <string name="inicio">NO</string>
     <string name="SincronizacionExito">Sincronizacion de Cantidades y Precios exitosa</string>
     <string name="SincronizacionFail">No se pudo Sincronizar las Cantidades y Precios</string>
     <string name="sincronizar">Sincronizar</string>
