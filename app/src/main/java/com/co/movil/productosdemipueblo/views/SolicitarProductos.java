@@ -39,6 +39,7 @@ public class SolicitarProductos extends AppCompatActivity {
         initComponents();
         crearListaProductos();
         calcularTotal();
+        lanzarAdvertenciaCantidad();
         productoSeleccionadoEliminar();
         revisarPedidoEnviado();
     }
@@ -49,6 +50,7 @@ public class SolicitarProductos extends AppCompatActivity {
         super.onResume();
         crearListaProductos();
         calcularTotal();
+        lanzarAdvertenciaCantidad();
         productoSeleccionadoEliminar();
         revisarPedidoEnviado();
     }
@@ -72,6 +74,27 @@ public class SolicitarProductos extends AppCompatActivity {
         listViewSolicitudProductos.setAdapter(adaptadorSolicitudes);
     }
 
+    private AlertDialog alertaCantidad() {
+        AlertDialog dlg = new AlertDialog.Builder(SolicitarProductos.this)
+                .setTitle(R.string.PedidoRiesgoso)
+                .setMessage(R.string.limiteCantidad)
+                .setPositiveButton(R.string.ok, (dialog, id) -> {
+                }).create();
+        return dlg;
+    }
+
+    private void lanzarAdvertenciaCantidad() {
+        boolean cantidadMayor = false;
+        for (Producto producto : productos) {
+            if (0 > producto.getCantidadDisponible()) {
+                cantidadMayor = true;
+            }
+        }
+        if (cantidadMayor) {
+            alertaCantidad().show();
+        }
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void calcularTotal() {
         textViewTotal = findViewById(R.id.textViewTotal);
@@ -93,7 +116,6 @@ public class SolicitarProductos extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     private Dialog createNewDialogContinue() {
         AlertDialog dlg = new AlertDialog.Builder(SolicitarProductos.this)
                 .setTitle(R.string.continuarCompra)

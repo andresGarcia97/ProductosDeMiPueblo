@@ -42,5 +42,12 @@
     <string name="continuarCompra">Usted ya envio un pedido</string>
     <string name="aceptarYcontinuar">"NO"</string>
     <string name="inicio">SÍ</string>
-
+    <string name="SincronizacionExito">Sincronizacion de Cantidades y Precios exitosa</string>
+    <string name="SincronizacionFail">No se pudo Sincronizar las Cantidades y Precios</string>
+    <string name="sincronizar">Sincronizar</string>
+    <string name="disponible">Disponibles: </string>
+    <string name="cantidadMayorDisponible">Cantidad seleccionada mayor a la disponible</string>
+    <string name="escogerCantidadNoDisponible">NO es posible escoger esta cantidad!</string>
+    <string name="limiteCantidad">La cantidad seleccionada es mayor a la disponible de alguno de los productos</string>
+    <string name="PedidoRiesgoso">No es posible asegurar el cumplimiento del pedido</string>
 </resources>

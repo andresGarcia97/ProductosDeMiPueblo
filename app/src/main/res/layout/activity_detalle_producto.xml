@@ -76,7 +76,7 @@
                 android:id="@+id/buttonAddUno"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginStart="164dp"
+                android:layout_marginStart="140dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/bordes_redondos"
@@ -84,10 +84,10 @@
                 android:text="@string/simboloMas"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/buttonNoAdd"
-                app:layout_constraintHorizontal_bias="0.09"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewPrecioProducto"
-                app:layout_constraintVertical_bias="0.238" />
+                app:layout_constraintVertical_bias="0.248" />
 
             <Button
                 android:id="@+id/buttonNoAdd"
@@ -101,16 +101,16 @@
                 android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.664"
+                app:layout_constraintHorizontal_bias="0.61"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewPrecioProducto"
-                app:layout_constraintVertical_bias="0.234" />
+                app:layout_constraintVertical_bias="0.256" />
 
             <EditText
                 android:id="@+id/editTextCantidadProducto"
-                android:layout_width="136dp"
+                android:layout_width="110dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
@@ -156,6 +156,21 @@
                 app:layout_constraintHorizontal_bias="0.694"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/buttonAddProducto" />
+
+            <TextView
+                android:id="@+id/textViewCantidadDisponible"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/disponible"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextCantidadProducto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.348"
+                app:layout_constraintStart_toEndOf="@+id/buttonNoAdd"
+                app:layout_constraintTop_toTopOf="@+id/editTextCantidadProducto"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

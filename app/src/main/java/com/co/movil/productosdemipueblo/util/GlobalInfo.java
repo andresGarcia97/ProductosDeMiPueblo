@@ -14,4 +14,6 @@ public class GlobalInfo {
     public static List<Negocio> NEGOCIOS = new ArrayList<>();
     public static boolean NEGOCIOSELECCIONADO = false;
     public static boolean PEDIDOENVIADO = false;
+    public static boolean SINCRONIZACION_EXITOSA = true;
+    public static int INDEX_PRODUCTO_SELECCIONADO = 0;
 }

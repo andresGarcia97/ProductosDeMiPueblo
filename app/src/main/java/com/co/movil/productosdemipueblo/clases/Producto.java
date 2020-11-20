@@ -16,6 +16,7 @@ public class Producto {
     private int cantidad;
     private String descripcion;
     private int precio;
+    private int cantidadDisponible;
 
     @Override
     public boolean equals(Object o) {

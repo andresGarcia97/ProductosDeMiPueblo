@@ -71,6 +71,7 @@ public class Productos extends AppCompatActivity {
     private void selectedProductoItem() {
         listViewProductos.setOnItemClickListener((adapterView, view, i, l) -> {
             GlobalInfo.PRODUCTO = productoAdapter.getItem(i);
+            GlobalInfo.INDEX_PRODUCTO_SELECCIONADO = i;
             lanzarActivityDetalleProducto(view);
         });
     }
